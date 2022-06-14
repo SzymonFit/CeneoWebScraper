@@ -24,7 +24,17 @@ class Product:
         pass
 
     def to_dict(self):
-        pass
+        product_data = {
+            "product_id": self.product_id,
+            "product_name": self.product_name,
+            "opinions": self.opinions,
+            "opinions_count": self.opinions_count,
+            "pros_count": self.pros_count,
+            "cons_count": self.cons_count,
+            "average_score": self.average_score,
+        }
+        return product_data
+
 
     def opinions_to_dict(self):
 
@@ -44,6 +54,7 @@ class Product:
                 url = "https://www.ceneo.pl"+get_item(page,"a.pagination__next","href")
             except TypeError:
                 url = None
+                
     def process_stats(self):
         
         self.opinions_count = len(self.opinions.index)
